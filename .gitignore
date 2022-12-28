@@ -1,3 +1,5 @@
 /.idea/
 /target
 /JavaStreams/target/
+*.iml
+
