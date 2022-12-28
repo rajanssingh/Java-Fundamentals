@@ -5,6 +5,8 @@ import com.rajancodes.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Filtering {
@@ -12,7 +14,10 @@ public class Filtering {
     @Test
     public void filter() throws Exception {
         List<Car> cars = MockData.getCars();
+        cars.stream().filter(carPredicate).forEach(System.out::println);
     }
+
+    final Predicate<Car> carPredicate = car -> car.getPrice() < 10000;
 
     @Test
     public void dropWhile() throws Exception {
