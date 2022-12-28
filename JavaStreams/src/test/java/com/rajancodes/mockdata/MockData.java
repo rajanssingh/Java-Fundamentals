@@ -1,8 +1,8 @@
-package com.amigoscode.mockdata;
+package com.rajancodes.mockdata;
 
 
-import com.amigoscode.beans.Car;
-import com.amigoscode.beans.Person;
+import com.rajancodes.beans.Car;
+import com.rajancodes.beans.Person;
 import com.google.common.io.Resources;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;

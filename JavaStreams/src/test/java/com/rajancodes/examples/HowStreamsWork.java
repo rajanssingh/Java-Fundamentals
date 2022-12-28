@@ -1,8 +1,8 @@
-package com.amigoscode.examples;
+package com.rajancodes.examples;
 
 
-import com.amigoscode.beans.Person;
-import com.amigoscode.mockdata.MockData;
+import com.rajancodes.beans.Person;
+import com.rajancodes.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
