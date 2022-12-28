@@ -4,7 +4,9 @@ import com.rajancodes.beans.Car;
 import com.rajancodes.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,14 +41,17 @@ public class Filtering {
         System.out.println("using take while");
     }
 
+    final Predicate<Integer> numbersLessThan10 = n -> n < 10;
     @Test
     public void findFirst() throws Exception {
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        System.out.println(Arrays.stream(numbers).boxed().filter(numbersLessThan10).findFirst().get());
     }
 
     @Test
     public void findAny() throws Exception {
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10};
+        System.out.println(Arrays.stream(numbers).filter(n -> n < 10).findAny().getAsInt());
     }
 
     @Test
