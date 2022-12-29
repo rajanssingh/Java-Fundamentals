@@ -21,11 +21,16 @@ public class UnderstandingStreams {
                         ArrayList::add,
                         ArrayList::addAll
                 );
+        /*MockData.getPeople().stream().map(Person::getEmail).collect(
+                () -> new ArrayList<String>(),
+                (list,element) -> list.add(element),
+                (list1,list2) -> list1.addAll(list2)
+        );*/
         emails.forEach(System.out::println);
     }
 
     @Test
-    public void lazy() throws Exception {
+    public void intermediateAndTerminalOperations_LazyInitialization() throws Exception {
         System.out.println(
                 MockData.getCars()
                         .stream()
