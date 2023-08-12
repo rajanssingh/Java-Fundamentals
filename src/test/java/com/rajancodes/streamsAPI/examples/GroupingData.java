@@ -1,15 +1,13 @@
-package com.rajancodes.examples;
+package com.rajancodes.streamsAPI.examples;
 
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
-import com.rajancodes.beans.Car;
-import com.rajancodes.mockdata.MockData;
+import com.rajancodes.streamsAPI.beans.Car;
+import com.rajancodes.streamsAPI.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class GroupingData {

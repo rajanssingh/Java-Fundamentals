@@ -1,7 +1,7 @@
-package com.rajancodes.examples;
+package com.rajancodes.streamsAPI.examples;
 
-import com.rajancodes.beans.Person;
-import com.rajancodes.mockdata.MockData;
+import com.rajancodes.streamsAPI.beans.Person;
+import com.rajancodes.streamsAPI.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

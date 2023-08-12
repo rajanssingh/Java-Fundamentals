@@ -1,4 +1,4 @@
-package com.rajancodes.examples;
+package com.rajancodes.streamsAPI.examples;
 
 import org.junit.jupiter.api.Test;
 

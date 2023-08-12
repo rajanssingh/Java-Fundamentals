@@ -1,14 +1,12 @@
-package com.rajancodes.examples;
+package com.rajancodes.streamsAPI.examples;
 
-import com.rajancodes.beans.Car;
-import com.rajancodes.mockdata.MockData;
+import com.rajancodes.streamsAPI.beans.Car;
+import com.rajancodes.streamsAPI.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntPredicate;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Filtering {

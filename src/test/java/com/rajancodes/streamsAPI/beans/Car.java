@@ -1,4 +1,4 @@
-package com.rajancodes.beans;
+package com.rajancodes.streamsAPI.beans;
 
 public class Car {
 

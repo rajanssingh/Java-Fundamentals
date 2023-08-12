@@ -1,8 +1,8 @@
-package com.rajancodes.mockdata;
+package com.rajancodes.streamsAPI.mockdata;
 
 
-import com.rajancodes.beans.Car;
-import com.rajancodes.beans.Person;
+import com.rajancodes.streamsAPI.beans.Car;
+import com.rajancodes.streamsAPI.beans.Person;
 import com.google.common.io.Resources;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
