@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.*;
 
 public class Java8SampleQuestions {
 
@@ -130,6 +130,77 @@ public class Java8SampleQuestions {
                 .collect(Collectors.toMap(Function.identity(), w->1, Integer::sum));
         System.out.println(frequencyWordsUsingMap);
         System.out.println("---------------------------------");
+    }
+
+    /**
+     * Sort a given list of decimals in reverse order
+     *
+     * Write a Java 8 program to sort a given list of decimal numbers in reverse order.
+     */
+    @Test
+    @DisplayName("Sort in reverse order")
+    void _05_reverseOrderSort(){
+        // List.of() returns unmodifiable list, thus cannot call sort in that
+        List<Integer> list = new ArrayList<>(List.of(1,2,5,4,3,6,7,7));
+//        list.sort(Comparator.reverseOrder());
+
+        list.stream().sorted((x,y) -> Integer.compare(y, x)).collect(Collectors.toList()).forEach(System.out::print);
+        System.out.println("-----------------------");
+
+        list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()).forEach(System.out::print);
+        System.out.println("------------------------");
+    }
+
+    /**
+     * Join a list of strings with '[' as prefix, ']' as suffix, and ',' as delimiter
+     *
+     * Given a list of strings, write a Java 8 program to join the strings
+     * with '[' as a prefix, ']' as a suffix, and ',' as a delimiter.
+     */
+
+    @Test
+    @DisplayName("Join list of strings with prefix, postfix and delimiter")
+    void _06_joinListOfStrings(){
+        List<String> languageList = List.of("java", "c++", "c", "C sharp", "python", "kotlin", "scala");
+        String joinedString = languageList.stream().collect(Collectors.joining(", ", "[", "]"));
+        System.out.println(joinedString);
+    }
+
+    /**
+     * Find the maximum and minimum of a list of integers
+     * Given a list of integers, write a Java 8 program to find the maximum and minimum numbers in the list.
+     */
+    @Test
+    @DisplayName("Min and max from list")
+    void _07_minMaxFromList(){
+        List<Integer> list = List.of(1,5,3,2,65,72,0);
+        Integer max = list.stream().max(Integer::compareTo).orElse(Integer.MAX_VALUE);
+        Integer min = list.stream().min(Integer::compareTo).orElse(Integer.MIN_VALUE);
+        System.out.println("Min and Max - " + min + ", " + max);
+
+        IntSummaryStatistics summaryStatistics = list.stream().collect(summarizingInt(Integer::intValue));
+        System.out.println("min - " + summaryStatistics.getMin());
+        System.out.println("max - " + summaryStatistics.getMax());
+        System.out.println("count - " + summaryStatistics.getCount());
+        System.out.println("average - " + summaryStatistics.getAverage());
+    }
+
+    /**
+     * Merge two unsorted arrays into a single sorted array using Java 8 streams
+     * Write a Java 8 program to merge two unsorted arrays into a single-sorted array using the stream API.
+     */
+    @Test
+    @DisplayName("Merge unsorted array into sorted array")
+    void _08_mergeUnsortedArrayIntoSorted(){
+        int [] array1 = {12, 32, 2, 4, 777, 5, 32, 890, 422, 44, 99, 43};
+        int [] array2 = {4, 3, 2, 5, 6, 78, 98, 53, 90};
+
+        int [] sortedArray = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2)).sorted().toArray();
+        System.out.println(Arrays.toString(sortedArray));
+
+        int[] sortedArrayWithoutDuplicates = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2))
+                .distinct().sorted().toArray();
+        System.out.println(Arrays.toString(sortedArrayWithoutDuplicates));
     }
 
 
