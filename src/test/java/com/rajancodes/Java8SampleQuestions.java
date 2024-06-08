@@ -7,6 +7,9 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 public class Java8SampleQuestions {
 
     /**
@@ -92,15 +95,68 @@ public class Java8SampleQuestions {
      */
     @Test
     @DisplayName("Character frequency")
-    void characterFrequency(){
+    void _03_characterFrequency(){
         String word = "Hello World";
 
         String wordWithoutSpace = Arrays.stream(word.split(" ")).peek(System.out::println).collect(Collectors.joining(""));
         System.out.println(wordWithoutSpace);
 
-        Arrays.stream(wordWithoutSpace.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+        Arrays.stream(wordWithoutSpace.split("")).collect(groupingBy(Function.identity(), counting()))
                 .entrySet().forEach(e -> System.out.println(e.getKey() + " --> " + e.getValue()));
 
-
     }
+
+    /**
+     * Find the frequency of each element in an array or a list
+     *
+     * Write a Java 8 program to find the frequency of
+     * each element in an array or a list using streams and collectors.
+     */
+    @Test
+    @DisplayName("Word frequency")
+    void _04_wordFrequency(){
+        List<String> names = Arrays.asList("rohit", "urmila", "rohit", "urmila", "ram", "sham", "sita", "gita");
+        Map<String, Long> frequencyWords = names.stream()
+                .collect(groupingBy(Function.identity(), counting()));
+        System.out.println(frequencyWords);
+        System.out.println("-------------------------------");
+
+        Map<String, Integer> frequencyWordsUsingSummingInt = names.stream().parallel()
+                .collect(groupingBy(Function.identity(), Collectors.summingInt(e -> 1)));
+        System.out.println(frequencyWordsUsingSummingInt);
+        System.out.println("--------------------------------");
+
+        Map<String, Integer> frequencyWordsUsingMap = names.stream()
+                .collect(Collectors.toMap(Function.identity(), w->1, Integer::sum));
+        System.out.println(frequencyWordsUsingMap);
+        System.out.println("---------------------------------");
+    }
+
+
+
+
+
+    /**
+     * Find most frequent item and frequencies of items in a generic collection.
+     * @param items
+     * @return
+     * @param <T>
+     */
+    private <T> T findMostFrequentItem(Collection<T> items){
+        return items.stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.groupingBy(Function.identity(), counting()))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparing(Map.Entry::getValue))
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
+
+    private <T> Map<T, Long> findItemFrequencies(Collection<T> items){
+        return items.stream()
+                .filter(Objects::nonNull)
+                .collect(groupingBy(Function.identity(), counting()));
+    }
+
 }
