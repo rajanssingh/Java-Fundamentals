@@ -521,6 +521,25 @@ public class Java8SampleQuestions {
         System.out.println(String.format("Age = %d years %d months %d days", timePeriod.getYears(), timePeriod.getMonths(), timePeriod.getDays()));
     }
 
+    /**
+     * Given list of numbers , find sum of squares of all nums
+     */
+    @Test
+    void _30_sumSquare(){
+        List<Integer> nums = Arrays.asList(1,2,3,4,5);
+
+        System.out.println(nums.stream().map(n -> n*n).reduce(0, Integer::sum));
+    }
+
+    /**
+     * List of string --> create a map where key -> string length and value is list of string of that length
+     */
+    @Test
+    void _31_stringLengthMap(){
+        List<String> words = Arrays.asList("apple", "orange", "banana", "kiwi", "pear", "pear", "1234");
+        words.stream().collect(Collectors.groupingBy(String::length, Collectors.toSet())).entrySet().forEach(e -> System.out.println(e.getKey() + "--> " + e.getValue()));
+    }
+
 
     /**
      * Find most frequent item and frequencies of items in a generic collection.
