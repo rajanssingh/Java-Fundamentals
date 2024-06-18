@@ -1,4 +1,4 @@
-package com.rajancodes;
+package com.rajancodes.Java8;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -540,6 +540,15 @@ public class Java8SampleQuestions {
         words.stream().collect(Collectors.groupingBy(String::length, Collectors.toSet())).entrySet().forEach(e -> System.out.println(e.getKey() + "--> " + e.getValue()));
     }
 
+    /**
+     * List of string --> Map where key is word and value is length of the word
+     */
+    @Test
+    void _32_stringLengthMap2(){
+        List<String> words = Arrays.asList("apple", "orange", "banana", "kiwi", "pear", "pear", "1234");
+        Map<String, Integer> map = words.stream().distinct().collect(Collectors.toMap(Function.identity(), String::length));
+        printConsumer.accept(map);
+    }
 
     /**
      * Find most frequent item and frequencies of items in a generic collection.
@@ -564,4 +573,14 @@ public class Java8SampleQuestions {
                 .collect(groupingBy(Function.identity(), counting()));
     }
 
+    private Consumer printConsumer = (t) -> {
+        if(t instanceof Map<?,?>){
+            ((Map<?, ?>) t).entrySet().forEach(c -> System.out.println(c));
+        }
+        else if (t instanceof List<?>) {
+            ((Collection<?>) t).forEach(c -> System.out.println(c));
+        } else {
+            System.out.println(t);
+        }
+    };
 }
