@@ -2,15 +2,13 @@ package com.rajancodes.Java8;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Java8ComplexQuestions {
+public class Java8ComplexQuestionsTest {
     /**
      * 1. Multi level grouping
      * Given list of transactions, group them first by year, then by month.
@@ -54,12 +52,14 @@ public class Java8ComplexQuestions {
 
     }
 
-    private Consumer printConsumer = (t) -> {
-        if(t instanceof Map<?,?>){
-            ((Map<?, ?>) t).entrySet().forEach(c -> System.out.println(c));
+    private final Consumer<Object> printConsumer = (t) -> {
+        if(t instanceof Map<?,?> map){
+            map.forEach((key, value) -> System.out.println(key + " -> " + value));
         }
-        else if (t instanceof List<?>) {
-            ((Collection<?>) t).forEach(c -> System.out.println(c));
+        else if (t instanceof List<?> list) {
+            list.forEach(System.out::println);
+        } else if (t instanceof Collection<?> collection) {
+            collection.forEach(System.out::println);
         } else {
             System.out.println(t);
         }

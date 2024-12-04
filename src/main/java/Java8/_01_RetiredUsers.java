@@ -2,7 +2,6 @@ package Java8;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class _01_RetiredUsers {
@@ -32,7 +31,7 @@ public class _01_RetiredUsers {
      * private static List<String> findRetiredUsers(List<User> users, List<UserCriteria> userCriteriaList) {
      * List<String> retiredUsers = new ArrayList<>();
      * // Implement here
-     * return retiredUsers;
+     * return retiredUsers;
      * }
      */
 
