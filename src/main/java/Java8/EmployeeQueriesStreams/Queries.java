@@ -50,10 +50,15 @@ public class Queries {
                 .collect(Collectors.toList());
         print(employeesAfter2015);
 
-        // 6. Count the number of employees in each department?
+        // 6.a. Count the number of employees in each department?
         Map<String, Long> numberOfEmployeesPerDepartment = employeeList.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
         System.out.println(numberOfEmployeesPerDepartment);
+
+        // 6.b. Count the number of males and females in each department
+        Map<String, Map<String, Long>> numberOfEmployeesPerGenderPerDepartment = employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.groupingBy(Employee::getGender, Collectors.counting())));
+        System.out.println(numberOfEmployeesPerGenderPerDepartment);
 
         // 7. What is the average salary of each department?
         Map<String, Double> averageSalaryPerDepartment = employeeList.stream()
@@ -68,9 +73,8 @@ public class Queries {
         System.out.println(youngestEmployee);
 
         // 9. Who has the most working experience in the organization?
-        Employee mostExperienced = employeeList.stream()
-                .sorted(Comparator.comparingInt(Employee::getYearOfJoining))
-                .findFirst()
+        List<Employee> sortedEmployeeList = employeeList.stream().sorted(Comparator.comparing(Employee::getYearOfJoining)).toList();
+        Employee mostExperienced = employeeList.stream().min(Comparator.comparingInt(Employee::getYearOfJoining))
                 .orElse(null);
         System.out.println(mostExperienced);
 
@@ -94,7 +98,7 @@ public class Queries {
 
         // 13. What is the average salary and total salary of the whole organization?
         DoubleSummaryStatistics summaryStatistics = employeeList.stream().collect(Collectors.summarizingDouble(Employee::getSalary));
-        System.out.println(String.format("Avg - %.2f, Total = %.2f", summaryStatistics.getAverage(), summaryStatistics.getSum()));
+        System.out.printf("Avg - %.2f, Total = %.2f%n", summaryStatistics.getAverage(), summaryStatistics.getSum());
 
         // 14.  Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years.
         Map<Boolean, List<Employee>> separatedEmployee = employeeList.stream()
@@ -116,8 +120,7 @@ public class Queries {
 
     private static <T> void print(Collection<T> collection){
         System.out.println("---------------------------");
-        collection.forEach(c ->
-            System.out.println(c));
+        collection.forEach(System.out::println);
         System.out.println("---------------------------");
     }
 }

@@ -1,18 +1,15 @@
 package com.rajancodes.Collections;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.Stream;
 
-import static java.lang.String.CASE_INSENSITIVE_ORDER;
-
 /**
- * Puzzles shown in https://www.youtube.com/watch?v=i6xD6-KPQ-g&t=633s
+ * Puzzles shown in <a href="https://www.youtube.com/watch?v=i6xD6-KPQ-g&t=633s">...</a>
  * Seminar by Maurice Naftalin && Dmitry Vyazelenko
  */
-public class CollectionPuzzles {
+public class CollectionPuzzlesTest {
 
     @Test
     void arraysAsList(){
