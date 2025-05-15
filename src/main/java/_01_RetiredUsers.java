@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class _01_RetiredUsers {
-
     /**
      * Problem -
      * Find retired users
