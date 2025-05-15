@@ -1,4 +1,4 @@
-package Java8.EmployeeQueriesStreams;
+package EmployeeQueriesStreams;
 
 import java.util.*;
 import java.util.stream.Collectors;
