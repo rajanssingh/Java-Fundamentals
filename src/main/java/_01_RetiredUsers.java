@@ -11,7 +11,7 @@ public class _01_RetiredUsers {
      * Input :
      * <p>
      * List<User> users = new ArrayList<>();
-     * users.add(new User("Chris", 55, "M"));
+     * users. add(new User("Chris", 55, "M"));
      * users.add(new User("Kelly", 65, "F"));
      * users.add(new User("Paul", 70, "M"));
      * users.add(new User("Anthony", 52, "M"));
