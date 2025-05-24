@@ -1,4 +1,4 @@
-package Java8.EmployeeQueriesStreams;
+package EmployeeQueriesStreams;
 
 public class Employee
 {
