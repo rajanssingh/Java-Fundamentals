@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class CollectorsProblems {
+public class CollectorsProblemsTest {
 
     /**
      * 1. Grouping and Counting within Groups
